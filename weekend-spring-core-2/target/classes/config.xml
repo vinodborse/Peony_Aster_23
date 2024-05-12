@@ -3,10 +3,12 @@
         "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
 
 <beans>
+	<!--  ============================================ -->
 	<bean class="com.ts.Student" name="s" >
 		<property name="rollno" value="3"></property>
 		<property name="name" value="Aliya"></property>
 	</bean>
+		<!--  ============================================ -->
 	
 <!--	Student s1 = new Student(1, "Vinod"); -->
 	<bean class="com.ts.Student" name="s1">
@@ -14,5 +16,24 @@
 		<constructor-arg value="Anarkali"></constructor-arg>
 	</bean>
 	
+	<!--  ============================================ -->	
+	<bean class="com.ts.Employee" name="em">
+		<property name="dept">
+			<bean class="com.ts.Department"></bean>
+		</property>
+	</bean>
+
+	<!--  ============================================ -->
+<!--
+	<bean class="com.ts.Employee" name="empl">
+		<property name="dept" ref="de"></property>
+	</bean>
 	
+	<bean class="com.ts.Department" name="de"></bean>
+-->
+	<!--  ============================================ -->
+	<bean class="com.ts.Employee" name="e1" autowire="byType"></bean>
+	
+	<bean class="com.ts.Department" name="d1"></bean>
+
 </beans>	

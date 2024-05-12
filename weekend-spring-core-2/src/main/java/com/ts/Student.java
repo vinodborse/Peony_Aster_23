@@ -1,8 +1,10 @@
 package com.ts;
 
 public class Student {
+	
 	private int rollno;
 	private String name;
+	
 	public int getRollno() {
 		return rollno;
 	}
