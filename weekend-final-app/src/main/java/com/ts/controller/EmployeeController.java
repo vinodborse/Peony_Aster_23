@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +23,9 @@ public class EmployeeController {
 	@Autowired
 	EmployeeService es;
 
-	@PostMapping("/add")
-	public ResponseEntity<String> addEmployee(@RequestBody Employee employee) {
+	@PostMapping("/add/{nm}")
+	public ResponseEntity<String> addEmployee(@RequestBody Employee employee, 
+											  @PathVariable("nm") String name) {
 
 		String result = es.addEmployee(employee);
 		
@@ -34,6 +36,12 @@ public class EmployeeController {
 	@GetMapping("/get")
 	public ResponseEntity<Employee> getEmployee(@RequestParam("empId") Long empId) {
 		Employee emp = es.getEmployee(empId);
+		return ResponseEntity.ok(emp);
+	}
+	
+	@GetMapping("/get-by-name")
+	public ResponseEntity<Employee> getEmployeeByName(@RequestParam("name") String name) {
+		Employee emp = es.getEmployeeByName(name);
 		return ResponseEntity.ok(emp);
 	}
 	
